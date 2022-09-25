@@ -98,8 +98,21 @@ public class JobData {
         // load data, if not already loaded
         loadData();
 
-        // TODO - implement this method
-        return null;
+        ArrayList<HashMap<String, String>> jobs = new ArrayList<>();
+
+        for (HashMap<String, String> row : allJobs) {
+            //we are looking for a key : value pair in the row and we are returning that keySet()
+            for(String key : row.keySet()){
+                String aValue = row.get(key);
+                //add the case insensitive method
+                if (aValue.toLowerCase().contains(value.toLowerCase())) {
+                    jobs.add(row);
+                    break;
+                }
+            }
+        }
+        //return null;
+        return jobs;
     }
 
     /**
